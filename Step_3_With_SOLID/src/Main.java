@@ -1,7 +1,4 @@
-import edu.sharif.selab.models.EmailMessage;
 import edu.sharif.selab.models.Message;
-import edu.sharif.selab.models.SmsMessage;
-import edu.sharif.selab.models.TelegramMessage;
 import edu.sharif.selab.services.EmailMessageService;
 import edu.sharif.selab.services.MessageService;
 import edu.sharif.selab.services.SmsMessageService;
@@ -15,7 +12,7 @@ public class Main {
         System.out.println("Hello and Welcome to SE Lab Messenger.");
         int userAnswer=0;
         do{
-            Message message = null;
+//            Message message = null;
             MessageService messageService;
             String source;
             String target;
@@ -46,18 +43,18 @@ public class Main {
             switch (userAnswer){
                 case 1:
                     messageService = new SmsMessageService();
-                    messageService.sendSmsMessage((SmsMessage) message);
                     break;
                 case 2:
                     messageService = new EmailMessageService();
-                    messageService.sendEmailMessage((EmailMessage) message);
                     break;
 
                 case 3:
                     messageService = new TelegramMessageService();
-                    messageService.sendTelegramMessage((TelegramMessage) message);
                     break;
             }
+
+            messageService.sendMessage(message);
+
 
         }while (true);
     }

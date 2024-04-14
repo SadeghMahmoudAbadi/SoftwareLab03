@@ -6,7 +6,7 @@ import java.util.regex.Pattern;
 
 public class TelegramMessageService implements MessageService{
     @Override
-    public void sendTelegramMessage(Message message) {
+    public void sendMessage(Message message) {
         if(validateTelegramID(message.getSource()) && validateTelegramID(message.getTarget())){
             System.out.println("Sending a Telegram Message from " + message.getSource() + " to " + message.getTarget() + " with content : " + message.getContent());
         }else{
