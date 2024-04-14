@@ -12,7 +12,7 @@ public class Main {
         System.out.println("Hello and Welcome to SE Lab Messenger.");
         int userAnswer=0;
         do{
-//            Message message = null;
+            Message message = null;
             MessageService messageService;
             String source;
             String target;
@@ -29,7 +29,7 @@ public class Main {
                 break;
             }
 
-            Message message = new Message();
+            message = new Message();
             System.out.print("Enter source : ");
             source = scanner.next();
             message.setSource(source);
@@ -43,17 +43,17 @@ public class Main {
             switch (userAnswer){
                 case 1:
                     messageService = new SmsMessageService();
+                    messageService.sendMessage(message);
                     break;
                 case 2:
                     messageService = new EmailMessageService();
+                    messageService.sendMessage(message);
                     break;
-
                 case 3:
                     messageService = new TelegramMessageService();
+                    messageService.sendMessage(message);
                     break;
             }
-
-            messageService.sendMessage(message);
 
 
         }while (true);
