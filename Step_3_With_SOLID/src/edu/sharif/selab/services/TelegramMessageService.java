@@ -1,26 +1,14 @@
 package edu.sharif.selab.services;
 
-import edu.sharif.selab.models.EmailMessage;
-import edu.sharif.selab.models.SmsMessage;
-import edu.sharif.selab.models.TelegramMessage;
+import edu.sharif.selab.models.Message;
 
 import java.util.regex.Pattern;
 
 public class TelegramMessageService implements MessageService{
     @Override
-    public void sendSmsMessage(SmsMessage smsMessage) {
-        //Empty Body
-    }
-
-    @Override
-    public void sendEmailMessage(EmailMessage emailMessage) {
-        //Empty Body!
-    }
-
-    @Override
-    public void sendTelegramMessage(TelegramMessage telegramMessage) {
-        if(validateTelegramID(telegramMessage.getSourceID()) && validateTelegramID(telegramMessage.getTargetID())){
-            System.out.println("Sending a Telegram Message from " + telegramMessage.getSourceID() + " to " + telegramMessage.getTargetID() + " with content : " + telegramMessage.getContent());
+    public void sendTelegramMessage(Message message) {
+        if(validateTelegramID(message.getSource()) && validateTelegramID(message.getTarget())){
+            System.out.println("Sending a Telegram Message from " + message.getSource() + " to " + message.getTarget() + " with content : " + message.getContent());
         }else{
             throw new IllegalArgumentException("Telegram ID is Not Correct!");
         }
